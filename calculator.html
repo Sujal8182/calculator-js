@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Only Calculator</title>
+  <style>
+    body {
+      background-color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+
+    .display {
+      background: #222;
+      color: #0f0;
+      font-size: 32px;
+      text-align: right;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      height: 50px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .buttons button {
+      padding: 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #ddd;
+    }
+
+    .buttons .operator {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    .buttons .equals {
+      background-color: #4caf50;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .buttons .clear {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button onclick="clearr()" class="clear">C</button>
+      <button >±</button>
+      <button onclick="displaytext('%')">%</button>
+      <button onclick="displaytext('/')" class="operator">÷</button>
+
+      <button onclick="displaytext('7')">7</button>
+      <button onclick="displaytext('8')">8</button>
+      <button onclick="displaytext('9')">9</button>
+      <button onclick="displaytext('*')" class="operator">×</button>
+
+      <button onclick="displaytext('4')">4</button>
+      <button onclick="displaytext('5')">5</button>
+      <button onclick="displaytext('6')">6</button>
+      <button onclick="displaytext('-')" class="operator">−</button>
+
+      <button onclick="displaytext('1')">1</button>
+      <button onclick="displaytext('2')">2</button>
+      <button onclick="displaytext('3')">3</button>
+      <button onclick="displaytext('/')" class="operator">+</button>
+
+      <button onclick="displaytext('0')">0</button>
+      <button onclick="displaytext('.')">.</button>
+      <button onclick="equ()" class="equals">=</button>
+    </div>
+  </div>
+</body>
+<script>
+    let display = document.getElementById("display")
+    function clearr(){
+        
+        display.innerHTML = `0`
+    }
+    function displaytext(val) {
+        if (display.innerText === '0') {
+            display.innerText = val;
+        } else {
+            display.innerText += val;
+        }
+    }
+
+    function equ(){
+        let dis = display.innerText
+        display.innerText = eval(dis)
+    }
+    
+</script>
+</html>
